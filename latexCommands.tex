@@ -1,10 +1,65 @@
-\title{Welcome to LAtex}
+\documentclass[10pt, twocolumn]{article}
+\usepackage[english,brazil]{babel}
+\usepackage[left=2cm, right=2cm, top = 1cm, down = 1 cm]{geometry}
+\usepackage{graphicx}
+\usepackage[center]{caption}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{rotating}
+\usepackage{csvsimple}
+\usepackage{multirow}
+\begin{document}
+\title{Welcome to Latex}
 \author{Ian L. de Almeida}
 \date{March 4}
 
-\begin{myFirstLatex}
 % this is a comment.
-\makelabel
-Here are some cool basic commands to ease your life regarding Latex! 
-
-\end{myFirstLatex}
+\maketitle 
+\textsc{Creating an Overleaf project from a Git repository}
+\par\par Here are some cool basic commands to ease your life regarding Latex and Github! 
+    
+\begin{enumerate}
+    \item Be sure you have a \textbf{git repository on your computer}.
+    \begin{itemize}
+        \item \textbf{git init} is used in order to create a new git repo.
+        \par After that, code:
+        \par \begin{verbatim}
+            git add .
+            git commit -m 'first commit'
+            git remote add origin git@gitlab.domain.com:username/repository.git
+            git push -u origin master
+        \end{verbatim}      
+        \item \textbf{git clone  [urlGit]} is used when there is already a repo in Github (the rest is the standard).
+    \end{itemize}
+    \item Create a \textbf{new project} on Overleaf.
+    \item \textbf{Find the git link} of your git. \textit{Overleaf's Project Menu} may help you find the url.
+    \item Add the git link for the project as a remote in your local project. 
+    \begin{verbatim}
+        cd folder
+        git remote add overleaf <urlOverleaf>
+    \end{verbatim}
+    \item \textbf{Pull} latest Overleaf content and \textbf{merge} it on the master branch:
+    \begin{verbatim}
+        git checkout master
+        git pull overleaf master --allow-unrelated-stories
+    \end{verbatim}
+    \item \textbf{Revert the merge} to get rid of existing files in Overleaf.
+    \begin{verbatim}
+        git revert --mainline 1 HEAD
+    \end{verbatim}
+    \item \textbf{Push} your project.
+    \begin{verbatim}
+        git push overleaf master
+    \end{verbatim}
+%\end{}
+    \begin{thebibliography}{9}
+        % Creates the fonts and enumerate them.
+        \bibitem{overleafAndGit} Using Git and GitHub. 
+        \par \texttt{https://pt.overleaf.com/learn/how-to/Using\_{}Git\_{}and\_{}GitHub}
+        \bibitem{bibliographyManagement} Bibliography Management.
+        \par \texttt{https://www.overleaf.com/learn/latex/bibliography\_{}management\_{}with\_{}bibtex}
+        \bibitem{multicolumns} Multiple Columns.
+        \par \texttt{https://www.overleaf.com/learn/latex/Multiple\_{}columns}
+    \end{thebibliography}
+\end{enumerate}
+\end{document}
